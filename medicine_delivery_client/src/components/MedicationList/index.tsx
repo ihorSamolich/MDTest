@@ -22,11 +22,21 @@ const MedicationList = ({ medications }: IMedicationListProps) => {
 		}
 	});
 
+	const favoriteMedications = sortedMedications?.filter(
+		medication => medication.favorite,
+	);
+	const nonFavoriteMedications = sortedMedications?.filter(
+		medication => !medication.favorite,
+	);
+
+	// @ts-ignore
+	const allMedications = [...favoriteMedications, ...nonFavoriteMedications];
+
 	return (
 		<>
 			<Sort setSortBy={setSortBy} />
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-6  py-4 px-4 h-[500px] overflow-y-auto'>
-				{sortedMedications?.map(medication => (
+				{allMedications?.map(medication => (
 					<MedicationCard key={medication.id} medication={medication} />
 				))}
 			</div>

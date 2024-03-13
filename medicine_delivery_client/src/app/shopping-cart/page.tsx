@@ -1,6 +1,6 @@
 import React from 'react';
-import Cart from '@/components/Cart';
 import { Metadata } from 'next';
+import Cart from '@/components/Cart';
 
 export const metadata: Metadata = {
 	title: 'Cart | Medicine Delivery app',

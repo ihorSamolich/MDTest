@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { IMedication } from '@/interfaces/medication';
 import Image from 'next/image';
 import { addToCart } from '@/store/cart.slice';
@@ -14,10 +14,16 @@ interface IMedicationCardProps {
 const MedicationCard = ({ medication }: IMedicationCardProps) => {
 	const dispatch = useAppDispatch();
 	const cartItems = useAppSelector(state => state.cart.items);
+	const [isFavorite, setIsFavorite] = useState(false);
 
 	const handleAddToCart = () => {
 		const medicationWithQuantity = { ...medication, quantity: 1 };
 		dispatch(addToCart(medicationWithQuantity));
+	};
+
+	const handleToggleFavorite = () => {
+		setIsFavorite(!isFavorite);
+		medication.favorite = !isFavorite;
 	};
 
 	return (
@@ -40,6 +46,7 @@ const MedicationCard = ({ medication }: IMedicationCardProps) => {
 						${medication.price}
 					</p>
 				</div>
+
 				<button
 					disabled={cartItems.some(item => item.medicate.id === medication.id)}
 					onClick={handleAddToCart}
@@ -50,6 +57,15 @@ const MedicationCard = ({ medication }: IMedicationCardProps) => {
 						: 'Add to cart'}
 				</button>
 			</div>
+
+			<button
+				onClick={handleToggleFavorite}
+				className={`absolute top-[-10px] right-[-10px] bg-red-600 w-6 h-6 rounded-full p-2 focus:outline-none flex items-center justify-center ${
+					isFavorite ? 'bg-green-600 text-white' : 'bg-gray-200'
+				}`}
+			>
+				{isFavorite ? '+' : '-'}
+			</button>
 		</div>
 	);
 };

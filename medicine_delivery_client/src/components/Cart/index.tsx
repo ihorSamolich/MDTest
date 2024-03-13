@@ -1,15 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import CartItem from '@/components/CartItem';
 import { ICustomer, IOrder } from '@/interfaces/cart';
 import { createOrder } from '@/lib/data';
 import { useRouter } from 'next/navigation';
+import { clearCart, setCart } from '@/store/cart.slice';
+import { loadCartFromLocalStorage } from '@/utils/localStorage';
 
 const Cart = () => {
 	const router = useRouter();
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		const initialCart = loadCartFromLocalStorage();
+		if (initialCart) {
+			dispatch(setCart(initialCart));
+		}
+	}, [dispatch]);
 
 	const {
 		register,
@@ -38,6 +48,7 @@ const Cart = () => {
 			const res = await createOrder(order);
 
 			if (res) {
+				dispatch(clearCart());
 				alert('Замовлення успішно створено!');
 				router.push('/');
 			} else {

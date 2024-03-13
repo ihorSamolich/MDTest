@@ -3,4 +3,5 @@ export interface IMedication {
 	name: string;
 	price: number;
 	image: string;
+	favorite: boolean;
 }
