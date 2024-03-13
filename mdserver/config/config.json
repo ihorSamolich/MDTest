@@ -1,0 +1,44 @@
+{
+  "development": {
+    "username": "dbmasteruser",
+    "password": "ikOdaUH{DUF&Vmi#W<R#`DFMizJ1bD(c",
+    "database": "MedecineDB",
+    "host": "ls-9b84d96d34e6eb6ed1618a034a0675238b57ec77.c3s2y40g68e6.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "port": 5432,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "test": {
+    "username": "dbmasteruser",
+    "password": "ikOdaUH{DUF&Vmi#W<R#`DFMizJ1bD(c",
+    "database": "MedecineDB",
+    "host": "ls-9b84d96d34e6eb6ed1618a034a0675238b57ec77.c3s2y40g68e6.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "port": 5432,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "production": {
+    "username": "dbmasteruser",
+    "password": "ikOdaUH{DUF&Vmi#W<R#`DFMizJ1bD(c",
+    "database": "MedecineDB",
+    "host": "ls-9b84d96d34e6eb6ed1618a034a0675238b57ec77.c3s2y40g68e6.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "port": 5432,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
