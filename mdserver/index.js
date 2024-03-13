@@ -21,10 +21,10 @@ const sequelize = new Sequelize('MedecineDB', 'dbmasteruser', 'ikOdaUH{DUF&Vmi#W
 });
 
 const models = {
-    Pharmacy: require('./models/Pharmacy')(sequelize),
-    Medication: require('./models/Medication')(sequelize),
-    OrderData: require('./models/OrderData')(sequelize),
-    OrderItem: require('./models/OrderItem')(sequelize),
+    Pharmacy: require('./models/pharmacy')(sequelize),
+    Medication: require('./models/medication')(sequelize),
+    OrderData: require('./models/orderData')(sequelize),
+    OrderItem: require('./models/orderItem')(sequelize),
 };
 
 Object.values(models).forEach((model) => {
